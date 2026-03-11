@@ -1,0 +1,26 @@
+def validate_user(user_data:dict)->bool:
+    name = user_data.get("name")
+    email=user_data.get("email")
+    age = user_data.get("age")
+    if name:
+        is_name=True
+    else:
+        return False
+    if email and "@" in email and "." in email:
+        is_email=True
+    else:
+        
+        return False
+    if age and 18<=age<=100:
+        is_age=True
+    else:
+        
+        return False
+    return True
+user_data={
+    "name": "Bob",
+    "age": 22,
+    "email":"roman.nasyrov@gmail.com"
+    }
+    
+print(validate_user(user_data))
