@@ -1,15 +1,18 @@
 def validate_user(user_data:dict)->bool:
-    name = user_data.get("name")
-    email=user_data.get("email")
+    
+    
     age = user_data.get("age")
-    if not name:
-        return False
-    if not email and "@" in email and "." in email:
-        return False
-    if not age and 18<=age<=100:
-        return False
-    return True
+       # Если хоть одно условие НЕ ВЫПОЛНЕНО — сразу выходим
+    return all([ user_data.get("name"),
+                 user_data.get("email") and  "@" in user_data.get("email") and  "." in user_data.get("email"),
+                 user_data.get("age") and 18<=user_data.get("age")<=100
+        ])
 
+  
+   
+
+    # Если мы дошли сюда — всё супер
+   
 user_data={
     "name": "Bob",
     "age": 22,
@@ -17,4 +20,6 @@ user_data={
     }
     
 print(validate_user(user_data))
-#fix : simplified falsy logic
+
+    
+
